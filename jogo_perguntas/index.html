@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Estruturas condicionais e JS</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h1>Estruturas condicionais e JS</h1>
+
+    <form id="form" onsubmit="submitForm(event)">
+      <div class="input-block">
+        <label for="pergunta_1">Qual o resultado de 5 + 9? </label>
+        <input type="text" id="pergunta_1" name="pergunta_1" />
+      </div>
+
+      <div class="input-block">
+        <label for="pergunta_2">Qual o resultado de 13 * 2? </label>
+        <input type="text" id="pergunta_2" name="pergunta_2" />
+      </div>
+
+      <div class="input-block">
+        <label for="pergunta_3">Qual o resultado de 11 + 1? </label>
+        <input type="text" id="pergunta_3" name="pergunta_3" />
+      </div>
+
+      <div class="input-block">
+        <label for="pergunta_4">Qual o resultado de 31 - 4? </label>
+        <input type="text" id="pergunta_4" name="pergunta_4" />
+      </div>
+
+      <div class="input-block">
+        <label for="pergunta_5">Qual a soma de todos os resultados? </label>
+        <input type="text" id="pergunta_5" name="pergunta_5" />
+      </div>
+
+      <button type="submit">Enviar respostas</button>
+    </form>
+
+    <script type="text/javascript">
+      function submitForm(event) {
+        event.preventDefault();
+
+        const form = document.getElementById("form");
+
+        const gabarito = {
+          pergunta_1: 14,
+          pergunta_2: 26,
+          pergunta_3: 12,
+          pergunta_4: 27,
+          pergunta_5: 89,
+        };
+
+        const respostas = {
+          pergunta_1: form.pergunta_1.value,
+          pergunta_2: form.pergunta_2.value,
+          pergunta_3: form.pergunta_3.value,
+          pergunta_4: form.pergunta_4.value,
+          pergunta_5: form.pergunta_5.value,
+        };
+
+        let acertos = 0;
+
+        for (let pergunta in gabarito) {
+          if (gabarito[pergunta] == respostas[pergunta]) {
+            acertos++;
+          }
+        }
+
+        if (acertos >= 4) {
+          alert(
+            `Parabéns, você acertou ${acertos} perguntas! Envie seu contato para ter um treinamento especializado`
+          );
+        } else {
+          alert(
+            `Você acertou ${acertos}perguntas, mas não desanime! Estamos oferencendo um ótimo treinamento para desenvolvedores, não perca essa chance!`
+          );
+        }
+
+        location.href = "https://profjh.com.br/#contact";
+      }
+    </script>
+  </body>
+</html>
